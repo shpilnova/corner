@@ -1,0 +1,798 @@
+/* ========================================
+   ОСТАТЬСЯ ДРУЗЬЯМИ - Main Stylesheet
+   Based on Dimension by HTML5 UP
+======================================== */
+
+/* Reset & Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #1b1f22;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body.is-preload *, 
+body.is-preload *::before, 
+body.is-preload *::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+h2.major {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+strong {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.centered {
+    text-align: center;
+}
+
+.date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Links */
+a {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.35);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    border-bottom-color: transparent;
+}
+
+/* Background */
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('../images/we.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.0);
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
+    filter: blur(12px);
+}
+
+#bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(19, 21, 25, 0.5);
+    z-index: 1;
+}
+
+body.is-article-visible #bg {
+    filter: blur(4px);
+    transform: scale(1.0825);
+}
+
+/* Wrapper */
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 2rem;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.325s ease-in-out;
+}
+
+body.is-article-visible #wrapper > *:not(#main) {
+    opacity: 0.15;
+    filter: blur(0.1rem);
+}
+
+/* Header */
+#header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+}
+
+/* Logo */
+#header .logo {
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+}
+
+#header .logo .icon {
+    font-size: 1.75rem;
+    color: #ffffff;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Вертикальная линия от круга */
+#header .logo::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 2rem; /* длина линии до блока .content */
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Content */
+#header .content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Горизонтальные линии (визитка) */
+#header .content::before,
+#header .content::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 1.5rem auto;
+}
+
+#header .content::before {
+    margin-bottom: 1rem;
+}
+
+#header .content::after {
+    margin-top: 1rem;
+}
+
+#header .content .inner {
+    max-width: 40rem;
+}
+
+#header .content h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+#header .content p {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    list-style: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+nav ul li {
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+nav ul li:first-child {
+    border-left: none;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-bottom: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.075);
+}
+
+/* Main / Articles */
+#main {
+    display: flex;
+    max-width: 100%;
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#main article {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.325s ease-in-out;
+    text-align: justify;
+}
+
+#main article.active {
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+#main article > .inner {
+    background: rgba(27, 31, 34, 0.95);
+    border-radius: 4px;
+    padding: 2.5rem 3rem;
+    max-width: 40rem;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(1rem);
+    transition: transform 0.5s ease;
+    position: relative;
+}
+
+#main article.active > .inner {
+    transform: translateY(0);
+}
+
+/* Scrollbar styling */
+#main article > .inner::-webkit-scrollbar {
+    width: 6px;
+}
+
+#main article > .inner::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+#main article > .inner::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+#main article > .inner::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Images */
+.image {
+    display: inline-block;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.image.main {
+    display: block;
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+/* Close Button */
+.close {
+    display: block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.close:hover {
+    background: rgba(255, 255, 255, 0.075);
+}
+
+/* Footer */
+#footer {
+    margin-top: auto;
+    text-align: center;
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+}
+
+#footer .copyright {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Overlay (для клика вне статьи) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.325s ease-in-out, backdrop-filter 0.325s ease-in-out;
+}
+
+body.is-article-visible .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 736px) {
+    html {
+        font-size: 14px;
+    }
+
+    #wrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    #header .logo {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    #header .content h1 {
+        font-size: 1.75rem;
+    }
+
+    #header .content p {
+        font-size: 0.875rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-width: 20rem;
+    }
+
+    nav ul li {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    nav ul li:first-child {
+        border-top: none;
+    }
+
+    nav ul li a {
+        padding: 0.875rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    #main article {
+        padding: 3rem 1.5rem;
+    }
+
+    #main article > .inner {
+        padding: 2rem 1.5rem;
+        max-height: 90vh;
+    }
+
+    h2.major {
+        font-size: 1.5rem;
+    }
+
+    /* Мобильные кнопки */
+    .close,
+    nav ul li a {
+        padding: 1rem 2rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #header .content h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+
+    nav ul li a {
+        font-size: 0.95rem;
+        padding: 1.2rem 2.5rem;
+        letter-spacing: 0.2em;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#header {
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+nav {
+    animation: fadeIn 1s ease-out 0.75s both;
+}
+
+#footer {
+    animation: fadeIn 1s ease-out 1s both;
+}
+
+
+/* ========================================
+   Анимация открытия страницы
+======================================== */
+
+/* Сначала скрываем и уменьшаем */
+body.is-preload #wrapper,
+body.is-preload #header,
+body.is-preload nav,
+body.is-preload #footer {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.98);
+}
+
+/* После загрузки плавно показываем */
+body.loaded #wrapper,
+body.loaded #header,
+body.loaded nav,
+body.loaded #footer {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Можно добавить задержки для плавного поочередного появления */
+body.loaded #header {
+    transition-delay: 0.2s;
+}
+body.loaded nav {
+    transition-delay: 0.4s;
+}
+body.loaded #footer {
+    transition-delay: 0.6s;
+}
+
+
+
+
+.icon-image {
+    width: 60px;   /* ширина */
+    height: auto;  /* сохраняем пропорции */
+    display: block;
+    margin: 1rem auto; /* по центру */
+}
+
+
+/* Адаптивное видео */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;  /* ограничиваем максимальную ширину */
+    margin: 2rem auto; /* по центру с отступами сверху/снизу */
+    padding-bottom: 56.25%; /* соотношение 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+}
+
+/* Кнопка карты */
+.map-button {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.map-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.map-button:active {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* 22222222222222222 */
+
+/* =========================
+   Countdown Timer Styling
+========================= */
+/* =========================
+   TIMER — FIX & DESIGN
+========================= */
+
+/* полностью отключаем влияние header .content */
+#timer.content {
+    /* position: fixed !important; */
+    inset: auto !important;
+
+    bottom: 2.5rem;
+    right: 2.5rem;
+
+    margin: 0 !important;
+    max-width: none !important;
+
+    display: block !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+
+
+    margin-top: 3rem !important;
+}
+
+/* сам блок */
+#timer {
+    /* background: rgba(18, 20, 24, 0.72); */
+    backdrop-filter: blur(14px);
+    /* -webkit-backdrop-filter: blur(14px); */
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+
+    padding: 1.4rem 2.2rem;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* внутреннее выравнивание */
+#timer .timer-inner {
+    text-align: center;
+}
+
+/* заголовок */
+#timer h2.major {
+    border: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* цифры */
+#countdown {
+    font-family: 'Source Sans Pro', system-ui, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+
+    color: #ffffff;
+}
+
+/* тревожное состояние */
+#countdown.warning {
+    color: #ffbcbc;
+    text-shadow: 0 0 14px rgba(255, 140, 140, 0.45);
+}
+
+/* когда открыт article — таймер «отступает» */
+body.is-article-visible #timer {
+    opacity: 0.25;
+    transform: translateY(6px);
+    pointer-events: none;
+}
+
+/* мобильная версия */
+@media screen and (max-width: 736px) {
+    #timer {
+        bottom: 1.4rem;
+        right: 1.4rem;
+        padding: 1.1rem 1.6rem;
+    }
+
+    #countdown {
+        font-size: 1.7rem;
+    }
+}
+
+
+
+/* ========================================
+   TEXT READABILITY FIX
+======================================== */
+
+/* Основной текст — легче читать */
+#main article p {
+    font-family: 'Source Sans Pro', system-ui, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+
+    letter-spacing: 0.01em; /* почти ноль */
+    color: rgba(255, 255, 255, 0.82);
+
+    margin-bottom: 1.6rem;
+}
+
+/* Акценты в тексте */
+#main article strong {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Даты и подписи */
+#main article .date {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Курсив — мягче */
+#main article .italic {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Заголовки внутри статей — более «литературные» */
+#main article h2.major {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 2rem;
+}
+
+/* Первый абзац — как вступление */
+#main article p:first-of-type {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+
+/* =========================
+   TIMER ONLY MODE
+========================= */
+
+body.timer-only #wrapper > * {
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(4px);
+    transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+/* ВОЗВРАЩАЕМ таймер */
+body.timer-only #timer {
+    opacity: 1 !important;
+    pointer-events: auto;
+    filter: none !important;
+    transform: none !important;
+}
+
+/* фон можно тоже убрать */
+body.timer-only #bg {
+    opacity: 0;
+}
+
+#timer.is-fixed {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 1000;
+}
